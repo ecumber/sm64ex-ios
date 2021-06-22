@@ -564,7 +564,7 @@ else ifeq ($(WINDOW_API),SDL2)
   else ifeq ($(TARGET_RPI),1)
     BACKEND_LDFLAGS += -lGLESv2
   else ifeq ($(OSX_BUILD),1)
-    BACKEND_LDFLAGS += framework OpenGLES -framework AVFoundation -framework AudioToolbox -framework CoreFoundation -framework CoreGraphics -framework GameController -framework Foundation -framework UIKit -framework QuartzCore -framework CoreMotion -L. -lSDL2
+    BACKEND_LDFLAGS += -framework OpenGLES -framework AVFoundation -framework AudioToolbox -framework CoreFoundation -framework CoreGraphics -framework GameController -framework Foundation -framework UIKit -framework QuartzCore -framework CoreMotion -framework Metal -L. -lSDL2
   else
     BACKEND_LDFLAGS += -lGL
   endif

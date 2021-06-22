@@ -16,7 +16,7 @@
 
 #if FOR_WINDOWS || defined(OSX_BUILD)
 # define GLEW_STATIC
-# include <GL/glew.h>
+# include <OpenGLES/ES2/gl.h>
 #endif
 
 #include <SDL2/SDL.h>
@@ -609,7 +609,8 @@ static inline bool gl_get_version(int *major, int *minor, bool *is_es) {
 }
 
 static void gfx_opengl_init(void) {
-#if FOR_WINDOWS || defined(OSX_BUILD)
+//if FOR_WINDOWS || defined(OSX_BUILD)
+#if 0
     GLenum err;
     if ((err = glewInit()) != GLEW_OK)
         sys_fatal("could not init GLEW:\n%s", glewGetErrorString(err));
