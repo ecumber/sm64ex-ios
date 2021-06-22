@@ -1,0 +1,1 @@
+gmake CC=clang -arch arm64 -mios-version-min=13.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk CXX=clang++ -arch arm64 -mios-version-min=13.2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk
