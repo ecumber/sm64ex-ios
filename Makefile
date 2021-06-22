@@ -28,7 +28,7 @@ TARGET_RPI ?= 0
 TARGET_WEB ?= 0
 
 # Makeflag to enable OSX fixes
-OSX_BUILD ?= 0
+OSX_BUILD ?= 1
 
 # Specify the target you are building for, TARGET_BITS=0 means native
 TARGET_ARCH ?= native
@@ -564,7 +564,7 @@ else ifeq ($(WINDOW_API),SDL2)
   else ifeq ($(TARGET_RPI),1)
     BACKEND_LDFLAGS += -lGLESv2
   else ifeq ($(OSX_BUILD),1)
-    BACKEND_LDFLAGS += -framework OpenGL `pkg-config --libs glew`
+    BACKEND_LDFLAGS += framework OpenGLES -framework AVFoundation -framework AudioToolbox -framework CoreFoundation -framework CoreGraphics -framework GameController -framework Foundation -framework UIKit -framework QuartzCore -framework CoreMotion -L. -lSDL2
   else
     BACKEND_LDFLAGS += -lGL
   endif
