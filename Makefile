@@ -564,7 +564,7 @@ else ifeq ($(WINDOW_API),SDL2)
   else ifeq ($(TARGET_RPI),1)
     BACKEND_LDFLAGS += -lGLESv2
   else ifeq ($(OSX_BUILD),1)
-    BACKEND_LDFLAGS += -framework OpenGLES -framework AVFoundation -framework AudioToolbox -framework CoreFoundation -framework CoreGraphics -framework GameController -framework Foundation -framework UIKit -framework QuartzCore -framework CoreMotion -framework Metal -L. -lSDL2
+    BACKEND_LDFLAGS +=-framework OpenGLES -framework AVFoundation -framework AudioToolbox -framework CoreFoundation -framework CoreGraphics -framework GameController -framework Foundation -framework UIKit -framework QuartzCore -framework CoreMotion -framework Metal -L. -lSDL2 -F. #-framework GL4ES -framework MetalANGLE
   else
     BACKEND_LDFLAGS += -lGL
   endif
@@ -1041,7 +1041,9 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -MD $(BUILD_DIR)/$*.d -o $@ $<
-
+	
+$(BUILD_DIR)/%.o: %.m
+	$(CC) -c ($CFLAGS)
 
 
 $(EXE): $(O_FILES) $(MIO0_FILES:.mio0=.o) $(SOUND_OBJ_FILES) $(ULTRA_O_FILES) $(GODDARD_O_FILES) $(BUILD_DIR)/$(RPC_LIBS)

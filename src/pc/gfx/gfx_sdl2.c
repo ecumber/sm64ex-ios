@@ -17,7 +17,7 @@
 #define GL_GLEXT_PROTOTYPES 1
 
 #ifdef OSX_BUILD
-#include <SDL2/SDL_opengl.h>
+#include <SDL2/SDL_opengles2.h>
 #else
 #include <SDL2/SDL_opengles2.h>
 #endif
@@ -161,9 +161,10 @@ static void gfx_sdl_init(const char *window_title) {
     wnd = SDL_CreateWindow(
         window_title,
         xpos, ypos, configWindow.w, configWindow.h,
-        SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
+        SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
     );
     ctx = SDL_GL_CreateContext(wnd);
+    void initialize_gl4es();
 
     SDL_GL_SetSwapInterval(configWindow.vsync);
 
